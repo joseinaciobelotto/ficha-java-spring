@@ -1,30 +1,32 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+
 public class MesaUsuario {
-    private int idusuario;
-    private int mesa;
+    private int idmesausuario;
     private boolean adm;
 
-    public MesaUsuario(int idusuario, int mesa, boolean adm) {
-        this.idusuario = idusuario;
-        this.mesa = mesa;
+    @ManyToOne
+    @JoinColumn(name = "idusuario")
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "idmesa")
+    private Mesa mesa;
+
+
+    public MesaUsuario(boolean adm) {
         this.adm = adm;
     }
 
-    public int getIdusuario() {
-        return idusuario;
-    }
 
-    public void setIdusuario(int idusuario) {
-        this.idusuario = idusuario;
-    }
 
-    public int getMesa() {
-        return mesa;
-    }
 
-    public void setMesa(int mesa) {
-        this.mesa = mesa;
+    public int getIdmesausuario() {
+        return idmesausuario;
+    }
+    public void setIdmesausuario(int idmesausuario) {
+        this.idmesausuario = idmesausuario;
     }
 
     public boolean isAdm() {
@@ -34,4 +36,26 @@ public class MesaUsuario {
     public void setAdm(boolean adm) {
         this.adm = adm;
     }
+
+    public Mesa getIdmesa() {
+        return mesa;
+    }
+
+    public void setIdmesa(Mesa idmesa) {
+        this.mesa = idmesa;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
+    }
+
+
 }

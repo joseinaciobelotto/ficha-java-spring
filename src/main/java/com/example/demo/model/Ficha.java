@@ -1,6 +1,15 @@
 package com.example.demo.model;
 
-public class Ficha {
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+
+@Entity
+public class Ficha implements Serializable {
+    private static final Long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idficha;
     private String nome;
     private String classe;
@@ -9,6 +18,14 @@ public class Ficha {
     private String[] Habilidades;
     private int idusuario;
     private int idmesa;
+
+    @ManyToOne
+    @JoinColumn(name = "idusuario")
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "idmesa")
+    private Mesa mesa;
 
 
     public Ficha(int idficha, String nome, String classe, String descricao, int[] atributo, String[] habilidades, int idusuario, int idmesa) {

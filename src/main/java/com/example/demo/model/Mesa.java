@@ -1,24 +1,37 @@
 package com.example.demo.model;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 public class Mesa {
-    private int idumesa;
+    private int idmesa;
     private String nome;
     private String descricao;
     private String tema;
+       public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    @ManyToOne
+    @JoinColumn(name = "idusuario")
+    private Usuario usuario;
 
     public Mesa(int idumesa, String nome, String descricao, String tema) {
-        this.idumesa = idumesa;
+        this.idmesa = idumesa;
         this.nome = nome;
         this.descricao = descricao;
         this.tema = tema;
     }
 
     public int getIdumesa() {
-        return idumesa;
+        return idmesa;
     }
 
     public void setIdumesa(int idumesa) {
-        this.idumesa = idumesa;
+        this.idmesa = idumesa;
     }
 
     public String getNome() {
