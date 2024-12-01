@@ -1,4 +1,4 @@
-package com.example.demo.model;
+/*package com.example.demo.model;
 
 import jakarta.persistence.*;
 @Table
@@ -20,15 +20,16 @@ public class MesaUsuario {
 
     public MesaUsuario() {
     }
-    public MesaUsuario(boolean adm) {
+    public MesaUsuario(boolean adm, Mesa mesa, Usuario usuario  ) {
         this.adm = adm;
+        this.mesa = mesa;
+        this.usuario = usuario;
     }
 
 
 
 
-    public int getIdmesausuario() {
-        return idmesausuario;
+    public int getIdmesausuario() {return idmesausuario;
     }
     public void setIdmesausuario(int idmesausuario) {
         this.idmesausuario = idmesausuario;
@@ -64,3 +65,5 @@ public class MesaUsuario {
 
 
 }
+*/
+

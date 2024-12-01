@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Usuario")
@@ -25,6 +26,12 @@ public class UsuarioController {
     public List<Usuario> listarUsuarios()
     {
         return usuarioRepositorio.findAll();
+    }
+
+    @GetMapping("/editarUsuarios")
+    public Optional<Usuario> editarUsuarios(@RequestParam int id)
+    {
+        return usuarioRepositorio.findById(id);
     }
 
     @PostMapping

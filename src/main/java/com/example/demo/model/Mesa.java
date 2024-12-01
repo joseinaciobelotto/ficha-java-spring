@@ -1,11 +1,12 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-@Table
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 @Entity
 public class Mesa {
-
-    private static final Long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,25 +17,29 @@ public class Mesa {
 
     @ManyToOne
     @JoinColumn(name = "idusuario")
-    private Usuario usuario;
+    @JsonIgnore
+    private Usuario usuario;  // Relacionamento com o usuário
 
-
+  /*  @OneToMany(mappedBy = "mesa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ficha> fichas;  // Uma mesa pode ter várias fichas
+*/
     public Mesa() {
     }
 
-    public Mesa( String nome, String descricao, String tema) {
-
+    public Mesa(String nome, String descricao, String tema, Usuario usuario) {
         this.nome = nome;
         this.descricao = descricao;
         this.tema = tema;
+        this.usuario = usuario;
     }
 
-    public int getIdumesa() {
+    // Getters e Setters
+    public int getIdmesa() {
         return idmesa;
     }
 
-    public void setIdumesa(int idumesa) {
-        this.idmesa = idumesa;
+    public void setIdmesa(int idmesa) {
+        this.idmesa = idmesa;
     }
 
     public String getNome() {
@@ -68,4 +73,12 @@ public class Mesa {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    /*public List<Ficha> getFichas() {
+        return fichas;
+    }
+
+    public void setFichas(List<Ficha> fichas) {
+        this.fichas = fichas;
+    }*/
 }

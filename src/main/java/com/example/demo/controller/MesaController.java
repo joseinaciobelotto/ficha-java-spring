@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.model.Ficha;
 import com.example.demo.model.Mesa;
 import com.example.demo.model.Usuario;
 import com.example.demo.repositories.MesaRepositorio;
@@ -8,24 +9,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/Ficha")
+@RequestMapping("/Mesa")
 public class MesaController {
 
     @Autowired
     private MesaRepositorio mesaRepositorio;
 
-    @GetMapping("/Oi")
-    public String helloWorld()
-    {
-        return "Oi, isto é apenas uma rota de teste!";
-    }
 
     @GetMapping
     public List <Mesa> listarMeas()
     {
         return mesaRepositorio.findAll();
+    }
+
+    @GetMapping("/editarMeas")
+    public Optional<Mesa> editarMeas(@RequestParam int id)
+    {
+        return mesaRepositorio.findById(id);
     }
 
     @PostMapping
@@ -39,5 +42,6 @@ public class MesaController {
         mesaRepositorio.deleteById(id);
         return "Apagado";
     }
+
 
 }

@@ -2,49 +2,35 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
-import java.io.Serializable;
-
-
-
 @Entity
-public class Ficha implements Serializable {
-    private static final Long serialVersionUID = 1L;
-
-
-
+public class Ficha {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idficha;
     private String nome;
     private String classe;
-    private String Descricao;
-    private int[] Atributo;
-    private String[] Habilidades;
-
-
-    @ManyToOne
-    @JoinColumn(name = "idusuario")
-    private Usuario usuario;
-
+    private String descricao;
+    private int[] atributo;
+    private String[] habilidades;
 
     @ManyToOne
     @JoinColumn(name = "idmesa")
-    private Mesa mesa;
+    private Mesa mesa;  // Relacionamento "muitos para um" com Mesa
 
     public Ficha() {
     }
 
-    public Ficha( String nome, String classe, String descricao, int[] atributo, String[] habilidades) {
-
+    public Ficha(String nome, String classe, String descricao, int[] atributo, String[] habilidades, Mesa mesa) {
         this.nome = nome;
         this.classe = classe;
-        Descricao = descricao;
-        Atributo = atributo;
-        Habilidades = habilidades;
-
+        this.descricao = descricao;
+        this.atributo = atributo;
+        this.habilidades = habilidades;
+        this.mesa = mesa;
     }
 
+    // Getters e Setters
     public int getIdficha() {
         return idficha;
     }
@@ -70,36 +56,29 @@ public class Ficha implements Serializable {
     }
 
     public String getDescricao() {
-        return Descricao;
+        return descricao;
     }
 
     public void setDescricao(String descricao) {
-        Descricao = descricao;
+        this.descricao = descricao;
     }
 
     public int[] getAtributo() {
-        return Atributo;
+        return atributo;
     }
 
     public void setAtributo(int[] atributo) {
-        Atributo = atributo;
+        this.atributo = atributo;
     }
 
     public String[] getHabilidades() {
-        return Habilidades;
+        return habilidades;
     }
 
     public void setHabilidades(String[] habilidades) {
-        Habilidades = habilidades;
+        this.habilidades = habilidades;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
     public Mesa getMesa() {
         return mesa;
     }
@@ -107,5 +86,4 @@ public class Ficha implements Serializable {
     public void setMesa(Mesa mesa) {
         this.mesa = mesa;
     }
-
 }
