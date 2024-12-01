@@ -4,9 +4,14 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 
+
+
 @Entity
 public class Ficha implements Serializable {
     private static final Long serialVersionUID = 1L;
+
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,27 +21,28 @@ public class Ficha implements Serializable {
     private String Descricao;
     private int[] Atributo;
     private String[] Habilidades;
-    private int idusuario;
-    private int idmesa;
+
 
     @ManyToOne
     @JoinColumn(name = "idusuario")
     private Usuario usuario;
 
+
     @ManyToOne
     @JoinColumn(name = "idmesa")
     private Mesa mesa;
 
+    public Ficha() {
+    }
 
-    public Ficha(int idficha, String nome, String classe, String descricao, int[] atributo, String[] habilidades, int idusuario, int idmesa) {
-        this.idficha = idficha;
+    public Ficha( String nome, String classe, String descricao, int[] atributo, String[] habilidades) {
+
         this.nome = nome;
         this.classe = classe;
         Descricao = descricao;
         Atributo = atributo;
         Habilidades = habilidades;
-        this.idusuario = idusuario;
-        this.idmesa = idmesa;
+
     }
 
     public int getIdficha() {
@@ -87,19 +93,19 @@ public class Ficha implements Serializable {
         Habilidades = habilidades;
     }
 
-    public int getIdusuario() {
-        return idusuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setIdusuario(int idusuario) {
-        this.idusuario = idusuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    public Mesa getMesa() {
+        return mesa;
     }
 
-    public int getIdmesa() {
-        return idmesa;
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
     }
 
-    public void setIdmesa(int idmesa) {
-        this.idmesa = idmesa;
-    }
 }

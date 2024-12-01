@@ -16,7 +16,7 @@ public class ConfiguracaoDb {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/bancospring");
-        dataSource.setUsername("bancospring");
+        dataSource.setUsername("root");
         dataSource.setPassword("");
         return dataSource;
     }

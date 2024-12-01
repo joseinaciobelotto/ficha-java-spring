@@ -1,8 +1,12 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-
+@Table
+@Entity
 public class MesaUsuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idmesausuario;
     private boolean adm;
 
@@ -14,7 +18,8 @@ public class MesaUsuario {
     @JoinColumn(name = "idmesa")
     private Mesa mesa;
 
-
+    public MesaUsuario() {
+    }
     public MesaUsuario(boolean adm) {
         this.adm = adm;
     }

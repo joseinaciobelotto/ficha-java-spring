@@ -1,23 +1,25 @@
 package com.example.demo.model;
 
-public class Usuario {
+import jakarta.persistence.*;
 
+@Table
+@Entity
+public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idusuario;
     private String nome;
     private String senha;
 
-    public Usuario(int idusuario, String nome, String senha)
+    public Usuario() {
+    }
+    public Usuario(String nome, String senha)
     {
-        this.idusuario = idusuario;
+
         this.nome = nome;
         this.senha = senha;
     }
 
-    public Usuario( String nome, String senha)
-    {
-        this.nome = nome;
-        this.senha = senha;
-    }
 
     public int getIdusuario() {
         return idusuario;
