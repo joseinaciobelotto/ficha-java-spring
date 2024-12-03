@@ -18,22 +18,23 @@ public class MesaController {
     @Autowired
     private MesaRepositorio mesaRepositorio;
 
-
     @GetMapping
-    public List <Mesa> listarMeas()
-    {
+    public List<Mesa> listarMesas() {
         return mesaRepositorio.findAll();
     }
 
+    @GetMapping("/usuario")
+    public List<Mesa> listarMesasPorUsuario(@RequestParam int idusuario) {
+        return mesaRepositorio.findByUsuario_Idusuario(idusuario);
+    }
+
     @GetMapping("/editarMeas")
-    public Optional<Mesa> editarMeas(@RequestParam int id)
-    {
+    public Optional<Mesa> editarMeas(@RequestParam int id) {
         return mesaRepositorio.findById(id);
     }
 
     @PostMapping
-    public Mesa escreverMesas(@RequestBody Mesa mesa)
-    {
+    public Mesa escreverMesas(@RequestBody Mesa mesa) {
         return mesaRepositorio.save(mesa);
     }
 
@@ -42,6 +43,4 @@ public class MesaController {
         mesaRepositorio.deleteById(id);
         return "Apagado";
     }
-
-
 }

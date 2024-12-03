@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.model.Ficha;
+import com.example.demo.model.Mesa;
 import com.example.demo.repositories.FichaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,12 @@ public class FichaController {
     {
         return fichaRepositorio.save(ficha);
     }
+
+    @GetMapping("/mesa")
+    public List<Ficha> listarFichaporMesa(@RequestParam int idmesa) {
+         return fichaRepositorio.findByMesa_Idmesa(idmesa);
+    }
+
 
     @DeleteMapping
     public String deletarFicha(@RequestParam int id) {

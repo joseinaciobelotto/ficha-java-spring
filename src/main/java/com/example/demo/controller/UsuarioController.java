@@ -46,4 +46,21 @@ public class UsuarioController {
         return "Apagado";
     }
 
+    @PostMapping("/login")
+    public String login(@RequestBody Usuario usuario) {
+        // Procura o usuário pelo nome no banco
+        Optional<Usuario> usuarioEncontrado = usuarioRepositorio.findByNome(usuario.getNome());
+
+        if (usuarioEncontrado.isPresent()) {
+            // Verifica se a senha coincide
+            if (usuarioEncontrado.get().getSenha().equals(usuario.getSenha())) {
+                return "Login bem-sucedido!";
+            } else {
+                return "Senha incorreta!";
+            }
+        } else {
+            return "Usuário não encontrado!";
+        }
+    }
+
 }

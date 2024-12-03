@@ -16,7 +16,7 @@ public class Ficha {
 
     @ManyToOne
     @JoinColumn(name = "idmesa")
-    private Mesa mesa;  // Relacionamento "muitos para um" com Mesa
+    private Mesa mesa;
 
     public Ficha() {
     }

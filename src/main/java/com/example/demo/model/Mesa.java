@@ -17,12 +17,11 @@ public class Mesa {
 
     @ManyToOne
     @JoinColumn(name = "idusuario")
-    @JsonIgnore
-    private Usuario usuario;  // Relacionamento com o usuário
+    private Usuario usuario;
 
   /*  @OneToMany(mappedBy = "mesa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Ficha> fichas;  // Uma mesa pode ter várias fichas
-*/
+    private List<Ficha> fichas;  // Uma mesa pode ter várias fichas*/
+
     public Mesa() {
     }
 

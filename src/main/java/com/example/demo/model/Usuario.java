@@ -8,11 +8,21 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idusuario;
+    @Column(nullable = false, unique = true)
     private String nome;
+
     private String senha;
+
+
+    /*
+    @OneToMany
+    @JoinColumn(name = "idmesa")
+    private List<Mesa> mesas;  // Relacionamento com o usuário
+
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Mesa> mesas;  // Um usuário pode ter várias mesas
+    */
 
     public Usuario() {
     }
@@ -47,11 +57,11 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public List<Mesa> getMesas() {
+    /*public List<Mesa> getMesas() {
         return mesas;
     }
 
     public void setMesas(List<Mesa> mesas) {
         this.mesas = mesas;
-    }
+    }*/
 }
