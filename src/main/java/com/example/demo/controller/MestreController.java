@@ -47,7 +47,7 @@ public class MestreController {
         return "Apagado";
     }
 
-    @PostMapping("/login")
+    /* @PostMapping("/login")
     public Mestre login(@RequestBody Mestre mestre) {
         // Procura o Mestre pelo nome no banco
         Optional<Mestre> mestreEncontrado = mestreRepositorio.findByNome(mestre.getNome());
@@ -61,6 +61,43 @@ public class MestreController {
             }
         } else {
             return mestre;
+        }
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody Mestre mestre) {
+        // Procura o Mestre pelo nome no banco
+        Optional<Mestre> mestreEncontrado = mestreRepositorio.findByNome(mestre.getNome());
+
+        if (mestreEncontrado.isPresent()) {
+            // Verifica se a senha coincide
+            if (mestreEncontrado.get().getSenha().equals(mestre.getSenha())) {
+                return "Login bem-sucedido!";
+            } else {
+                return "Senha incorreta!";
+            }
+        } else {
+            return "Mestre não encontrado!";
+        }
+    }
+    */
+
+
+
+    @PostMapping("/login")
+    public Optional<Mestre> login(@RequestBody Mestre mestre) {
+        // Procura o Mestre pelo nome no banco
+        Optional<Mestre> mestreEncontrado = mestreRepositorio.findByNome(mestre.getNome());
+
+        if (mestreEncontrado.isPresent()) {
+            // Verifica se a senha coincide
+            if (mestreEncontrado.get().getSenha().equals(mestre.getSenha())) {
+                return mestreEncontrado;
+            } else {
+                return mestreEncontrado;
+            }
+        } else {
+            return mestreEncontrado;
         }
     }
 
