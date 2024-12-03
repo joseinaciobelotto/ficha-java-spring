@@ -22,6 +22,7 @@ public class MesaUsuario {
     }
     public MesaUsuario(boolean adm, Mesa mesa, Usuario usuario  ) {
         this.adm = adm;
+
         this.mesa = mesa;
         this.usuario = usuario;
     }

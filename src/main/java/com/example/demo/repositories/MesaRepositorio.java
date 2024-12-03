@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface MesaRepositorio extends JpaRepository<Mesa, Integer> {
-    List<Mesa> findByUsuario_Idusuario(int idusuario); // Supondo que a coluna seja "idusuario" no banco
+    List<Mesa> findByMestre_Idmestre(int idmestre); // Supondo que a coluna seja "idusuario" no banco
 }

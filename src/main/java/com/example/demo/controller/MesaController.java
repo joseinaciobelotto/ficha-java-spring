@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.model.Ficha;
 import com.example.demo.model.Mesa;
-import com.example.demo.model.Usuario;
 import com.example.demo.repositories.MesaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,9 +21,9 @@ public class MesaController {
         return mesaRepositorio.findAll();
     }
 
-    @GetMapping("/usuario")
-    public List<Mesa> listarMesasPorUsuario(@RequestParam int idusuario) {
-        return mesaRepositorio.findByUsuario_Idusuario(idusuario);
+    @GetMapping("/mestre")
+    public List<Mesa> listarMesasPorMestre(@RequestParam int idmestre) {
+        return mesaRepositorio.findByMestre_Idmestre(idmestre);
     }
 
     @GetMapping("/editarMeas")

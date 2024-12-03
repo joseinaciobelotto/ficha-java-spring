@@ -1,8 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.util.List;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -16,8 +14,8 @@ public class Mesa {
     private String tema;
 
     @ManyToOne
-    @JoinColumn(name = "idusuario")
-    private Usuario usuario;
+    @JoinColumn(name = "idmestre")
+    private Mestre mestre;
 
   /*  @OneToMany(mappedBy = "mesa", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ficha> fichas;  // Uma mesa pode ter várias fichas*/
@@ -25,11 +23,11 @@ public class Mesa {
     public Mesa() {
     }
 
-    public Mesa(String nome, String descricao, String tema, Usuario usuario) {
+    public Mesa(String nome, String descricao, String tema, Mestre mestre) {
         this.nome = nome;
         this.descricao = descricao;
         this.tema = tema;
-        this.usuario = usuario;
+        this.mestre = mestre;
     }
 
     // Getters e Setters
@@ -65,12 +63,12 @@ public class Mesa {
         this.tema = tema;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Mestre getMestre() {
+        return mestre;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setMestre(Mestre mestre) {
+        this.mestre = mestre;
     }
 
     /*public List<Ficha> getFichas() {

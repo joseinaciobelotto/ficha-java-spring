@@ -1,13 +1,12 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.util.List;
 
 @Entity
-public class Usuario {
+public class Mestre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idusuario;
+    private int idmestre;
     @Column(nullable = false, unique = true)
     private String nome;
 
@@ -17,28 +16,28 @@ public class Usuario {
     /*
     @OneToMany
     @JoinColumn(name = "idmesa")
-    private List<Mesa> mesas;  // Relacionamento com o usuário
+    private List<Mesa> mesas;  // Relacionamento com o mestre
 
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Mesa> mesas;  // Um usuário pode ter várias mesas
+    @OneToMany(mappedBy = "mestre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Mesa> mesas;  // Um mestre pode ter várias mesas
     */
 
-    public Usuario() {
+    public Mestre() {
     }
 
-    public Usuario(String nome, String senha) {
+    public Mestre(String nome, String senha) {
         this.nome = nome;
         this.senha = senha;
     }
 
     // Getters e Setters
-    public int getIdusuario() {
-        return idusuario;
+    public int getIdmestre() {
+        return idmestre;
     }
 
-    public void setIdusuario(int idusuario) {
-        this.idusuario = idusuario;
+    public void setIdmestre(int idmestre) {
+        this.idmestre = idmestre;
     }
 
     public String getNome() {
