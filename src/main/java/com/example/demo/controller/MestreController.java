@@ -48,19 +48,19 @@ public class MestreController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody Mestre mestre) {
+    public Mestre login(@RequestBody Mestre mestre) {
         // Procura o Mestre pelo nome no banco
         Optional<Mestre> mestreEncontrado = mestreRepositorio.findByNome(mestre.getNome());
 
         if (mestreEncontrado.isPresent()) {
             // Verifica se a senha coincide
             if (mestreEncontrado.get().getSenha().equals(mestre.getSenha())) {
-                return "Login bem-sucedido!";
+                return mestre;
             } else {
-                return "Senha incorreta!";
+                return mestre;
             }
         } else {
-            return "Mestre não encontrado!";
+            return mestre;
         }
     }
 
