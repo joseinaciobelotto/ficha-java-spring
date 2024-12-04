@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 public class Mesa {
@@ -13,6 +15,8 @@ public class Mesa {
     private String descricao;
     private String tema;
 
+    @OneToMany(mappedBy = "idmesa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ficha> fichas;
     @ManyToOne
     @JoinColumn(name = "idmestre")
     private Mestre mestre;

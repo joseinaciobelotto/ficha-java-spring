@@ -2,11 +2,16 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Mestre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idmestre;
+
+    @OneToMany(mappedBy = "idmestre", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Mesa> mesas;
     @Column(nullable = false, unique = true)
     private String nome;
 

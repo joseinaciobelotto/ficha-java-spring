@@ -14,6 +14,8 @@ public class Ficha {
     private int[] atributo;
     private String[] habilidades;
 
+
+
     @ManyToOne
     @JoinColumn(name = "idmesa")
     private Mesa mesa;
