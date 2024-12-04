@@ -1,1 +1,1 @@
-Vai até o DemoAplication da aplicação e rode
+Vai até o DemoAplication da aplicação e clique para rodar.
