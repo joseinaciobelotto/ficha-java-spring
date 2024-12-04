@@ -15,7 +15,7 @@ public class Mesa {
     private String descricao;
     private String tema;
 
-    @OneToMany(mappedBy = "idmesa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "mesa", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ficha> fichas;
     @ManyToOne
     @JoinColumn(name = "idmestre")
